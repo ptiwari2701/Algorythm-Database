@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>
+
+        </title>
+    </head>
+    <body>
+        <button id="btnGetData" onclick="getData()">Show Data</button>
+        <div id="data">
+
+        </div>
+        <script>
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = ()=>{
+                    console.log("outside");
+                    if (xhttp.readyState == 4 && xhttp.status == 200){
+                        console.log("HERE");
+                        document.getElementById("data").innerHTML = JSON.parse( xhttp.responseText) ;
+                    }
+                }
+            function getData(){
+                xhttp.open("GET","http://168.61.54.14:8080/users");
+                xhttp.send();
+            }
+        </script>
+    </body>
+</html>

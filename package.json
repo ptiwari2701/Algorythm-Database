@@ -1,0 +1,19 @@
+{
+  "name": "algodatabase",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csv-writer": "^1.5.0",
+    "excel4node": "^1.7.2",
+    "exceljs": "^2.0.1",
+    "json2csv": "^4.5.2",
+    "mysql": "^2.17.1",
+    "xlsx": "^0.15.1"
+  }
+}

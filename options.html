@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <style>
+            table.altrowstable {
+                font-family: verdana,arial,sans-serif;
+                font-size:11px;
+                color:#333333;
+                border-width: 1px;
+                border-color: #a9c6c9;
+                border-collapse: collapse;
+            }
+            table.altrowstable th {
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #a9c6c9;
+            }
+            table.altrowstable td {
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #a9c6c9;
+            }
+            .oddrowcolor{
+                background-color:#d4e3e5;
+            }
+            .evenrowcolor{
+                background-color:#c3dde0;
+            }
+        </style>
+    </head>
+    <body onload="getData()">
+        <div id="root">
+            <table class="altrowstable" id = "table">
+                <tr>
+                    <th>Booklet</th>
+                    <th>Receipt</th>
+                    <th>Name</th>
+                    <th>Fathers_Name</th>
+                    <th>Contact</th>
+                    <th>Email</th>
+                    <th>University_Code</th>
+                    <th>University_ID</th>
+                    <th>Accomodation</th>
+                    <th>Transport</th>
+                    <th>Event</th>
+                    <th>Amount</th>
+                </tr>
+            </table>
+        </div>
+        <script>
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = ()=>{
+                if(xhttp.readyState==4 && xhttp.status==200){
+                    let result = JSON.parse(xhttp.responseText);
+                    let table = document.getElementById("table");
+                    for(let i=0;i<result.length;i++){
+                        let row = document.createElement("TR");
+                        row.setAttribute("class","row");
+                        let data = document.createElement("TD");
+                        data.appendChild(document.createTextNode(result[i].Booklet));
+                        row.appendChild(data);
+                        data = document.createElement("TD");
+                        data.appendChild(document.createTextNode(result[i].Receipt));
+                        row.appendChild(data);
+                        data = document.createElement("TD");
+                        data.appendChild(document.createTextNode(result[i].Name));
+                        row.appendChild(data);
+                        data = document.createElement("TD");
+                        data.appendChild(document.createTextNode(result[i].Fathers_Name));
+                        row.appendChild(data);
+                        data = document.createElement("TD");
+                        data.appendChild(document.createTextNode(result[i].Contact));
+                        row.appendChild(data);
+                        data = document.createElement("TD");
+                        data.appendChild(document.createTextNode(result[i].Email));
+                        row.appendChild(data);
+                        data = document.createElement("TD");
+                        data.appendChild(document.createTextNode(result[i].University_Code));
+                        row.appendChild(data);
+                        data = document.createElement("TD");
+                        data.appendChild(document.createTextNode(result[i].University_Id));
+                        row.appendChild(data);
+                        data = document.createElement("TD");
+                        data.appendChild(document.createTextNode(result[i].Accomodation));
+                        row.appendChild(data);
+                        data = document.createElement("TD");
+                        data.appendChild(document.createTextNode(result[i].Transport));
+                        row.appendChild(data);
+                        data = document.createElement("TD");
+                        data.appendChild(document.createTextNode(result[i].Event));
+                        row.appendChild(data);
+                        data = document.createElement("TD");
+                        data.appendChild(document.createTextNode(result[i].Amount));
+                        row.appendChild(data);
+                        console.log(row);
+                        table.appendChild(row);
+                    }
+                }
+            }
+            function getData(){
+                xhttp.open("GET","/users",true);
+                xhttp.send();
+            }
+        </script>
+    </body>
+</html>
